@@ -1,0 +1,24 @@
+@use "../utils/variables";
+
+.tag {
+  border-radius: 5px;
+  padding: 10px 20px;
+  border: none;
+  color: #fff;
+
+  >i {
+    margin-left: 15px;
+  }
+}
+
+.tag-ingredients {
+  background: variables.$blue;
+}
+
+.tag-machine {
+  background: variables.$green;
+}
+
+.tag-tools {
+  background: variables.$strong-red;
+}

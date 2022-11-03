@@ -1,0 +1,30 @@
+#search {
+  position: relative;
+
+
+  &::before {
+    content: url("../../assets/icons/magnifying.svg");
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  input {
+    padding: 25px;
+    width: 100%;
+    background: #E7E7E7;
+    border-radius: 5px;
+    border: none;
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 400;
+  }
+}
+
+#tag-result {
+  width: 100%;
+  padding: 25px 20px 15px 0;
+}

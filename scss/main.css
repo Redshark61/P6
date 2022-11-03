@@ -1,0 +1,157 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("../../assets/fonts/Lato/Lato-Regular.ttf"), url("../../assets/fonts/Lato/Lato-Black.ttf"), url("../../assets/fonts/Lato/Lato-Bold.ttf"), url("../../assets/fonts/Lato/Lato-Light.ttf"), url("../../assets/fonts/Lato/Lato-BlackItalic.ttf"), url("../../assets/fonts/Lato/Lato-BoldItalic.ttf"), url("../../assets/fonts/Lato/Lato-LightItalic.ttf"), url("../../assets/fonts/Lato/Lato-Italic.ttf"), url("../../assets/fonts/Lato/Lato-Thin.ttf"), url("../../assets/fonts/Lato/Lato-ThinItalic.ttf");
+}
+@font-face {
+  font-family: "DM Sans";
+  src: url("../../assets/fonts/DM_Sans/DMSans-Bold.ttf"), url("../../assets/fonts/DM_Sans/DMSans-BoldItalic.ttf"), url("../../assets/fonts/DM_Sans/DMSans-Italic.ttf"), url("../../assets/fonts/DM_Sans/DMSans-Medium.ttf"), url("../../assets/fonts/DM_Sans/DMSans-MediumItalic.ttf"), url("../../assets/fonts/DM_Sans/DMSans-Regular.ttf");
+}
+.flex {
+  display: flex;
+}
+.flex[class*=-v] {
+  flex-direction: column;
+}
+.flex[class*=-c] {
+  align-items: center;
+}
+.flex[class*=-w] {
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.flex[class*=-w][class*="3"] > * {
+  flex-basis: 30%;
+}
+.flex > .btn:first-child {
+  margin-left: 0;
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+.grid-2-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.text-r {
+  text-align: right;
+}
+
+.btn {
+  padding: 25px 20px;
+  margin-inline: 20px;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+.btn > i {
+  margin-left: 30px;
+}
+
+#search {
+  position: relative;
+}
+#search::before {
+  content: url("../../assets/icons/magnifying.svg");
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+}
+#search input {
+  padding: 25px;
+  width: 100%;
+  background: #E7E7E7;
+  border-radius: 5px;
+  border: none;
+  font-family: Lato;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+#tag-result {
+  width: 100%;
+  padding: 25px 20px 15px 0;
+}
+
+.tag {
+  border-radius: 5px;
+  padding: 10px 20px;
+  border: none;
+  color: #fff;
+}
+.tag > i {
+  margin-left: 15px;
+}
+
+.tag-ingredients {
+  background: #3282F7;
+}
+
+.tag-machine {
+  background: #68D9A4;
+}
+
+.tag-tools {
+  background: #ED6454;
+}
+
+body {
+  padding: 42px 100px 0;
+}
+
+h1 {
+  color: #D04F4F;
+  font-family: "DM Sans", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 47px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+section {
+  margin-bottom: 25px;
+}
+
+.dish {
+  border-radius: 5px;
+  overflow: hidden;
+}
+.dish .top,
+.dish .bottom {
+  height: 20vh;
+}
+.dish .top {
+  background: #C7BEBE;
+}
+.dish .bottom {
+  background: #E7E7E7;
+  padding: 20px;
+}
+.dish ul {
+  list-style: none;
+}
+.dish p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}/*# sourceMappingURL=main.css.map */

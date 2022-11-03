@@ -1,0 +1,54 @@
+@use "../utils/variables";
+
+body {
+  padding: 42px 100px 0;
+}
+
+h1 {
+  color: variables.$light-red;
+  font-family: "DM Sans", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 47px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+section {
+  margin-bottom: 25px;
+}
+
+.dish {
+  border-radius: 5px;
+  overflow: hidden;
+
+  .top,
+  .bottom {
+    height: 20vh;
+  }
+
+  .top {
+    background: #C7BEBE;
+  }
+
+  .bottom {
+    background: #E7E7E7;
+    padding: 20px;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+}

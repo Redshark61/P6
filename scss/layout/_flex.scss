@@ -1,0 +1,24 @@
+.flex {
+  display: flex;
+
+  &[class*="-v"] {
+    flex-direction: column;
+  }
+
+  &[class*="-c"] {
+    align-items: center;
+  }
+
+  &[class*="-w"] {
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    &[class*="3"]>* {
+      flex-basis: 30%;
+    }
+  }
+
+  &>.btn:first-child {
+    margin-left: 0;
+  }
+}

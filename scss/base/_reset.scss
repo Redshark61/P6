@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("../../assets/fonts/Lato/Lato-Regular.ttf"),
+    url("../../assets/fonts/Lato/Lato-Black.ttf"),
+    url("../../assets/fonts/Lato/Lato-Bold.ttf"),
+    url("../../assets/fonts/Lato/Lato-Light.ttf"),
+    url("../../assets/fonts/Lato/Lato-BlackItalic.ttf"),
+    url("../../assets/fonts/Lato/Lato-BoldItalic.ttf"),
+    url("../../assets/fonts/Lato/Lato-LightItalic.ttf"),
+    url("../../assets/fonts/Lato/Lato-Italic.ttf"),
+    url("../../assets/fonts/Lato/Lato-Thin.ttf"),
+    url("../../assets/fonts/Lato/Lato-ThinItalic.ttf");
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("../../assets/fonts/DM_Sans/DMSans-Bold.ttf"),
+    url("../../assets/fonts/DM_Sans/DMSans-BoldItalic.ttf"),
+    url("../../assets/fonts/DM_Sans/DMSans-Italic.ttf"),
+    url("../../assets/fonts/DM_Sans/DMSans-Medium.ttf"),
+    url("../../assets/fonts/DM_Sans/DMSans-MediumItalic.ttf"),
+    url("../../assets/fonts/DM_Sans/DMSans-Regular.ttf");
+}
