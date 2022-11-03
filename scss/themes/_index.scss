@@ -52,3 +52,15 @@ section {
     -webkit-box-orient: vertical;
   }
 }
+
+[class*="ingredients"] {
+  background: variables.$blue;
+}
+
+[class*="machine"] {
+  background: variables.$green;
+}
+
+[class*="tools"] {
+  background: variables.$strong-red;
+}

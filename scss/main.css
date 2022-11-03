@@ -46,6 +46,10 @@
   text-align: right;
 }
 
+.no-list {
+  list-style: none;
+}
+
 .btn {
   padding: 25px 20px;
   margin-inline: 20px;
@@ -56,6 +60,11 @@
 }
 .btn > i {
   margin-left: 30px;
+}
+
+.no-btn {
+  background-color: transparent;
+  border: none;
 }
 
 #search {
@@ -154,4 +163,16 @@ section {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+[class*=ingredients] {
+  background: #3282F7;
+}
+
+[class*=machine] {
+  background: #68D9A4;
+}
+
+[class*=tools] {
+  background: #ED6454;
 }/*# sourceMappingURL=main.css.map */
