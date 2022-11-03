@@ -1,6 +1,6 @@
 .btn {
   padding: 25px 20px;
-  margin-inline: 20px;
+  margin: 0 20px;
   border-radius: 5px;
   border: none;
   color: #fff;
@@ -9,9 +9,14 @@
   >i {
     margin-left: 30px;
   }
+
 }
 
 .no-btn {
   background-color: transparent;
   border: none;
+}
+
+.no-left {
+  margin-left: 0;
 }

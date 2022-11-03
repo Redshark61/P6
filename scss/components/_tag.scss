@@ -9,6 +9,22 @@
   >i {
     margin-left: 15px;
   }
+
+  &-wrapper {
+    &.active {
+      .btn {
+        width: 100%;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    ul {
+      padding: 25px 20px;
+    }
+  }
 }
 
 .tag-ingredients {
