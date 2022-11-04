@@ -6,7 +6,7 @@
 
 - [ ] crées un document de comparaison qu’on appelle “fiche d’investigation de fonctionnalité”.
 
-- [ ] commencer par implémenter ton interface
+- [x] commencer par implémenter ton interface
 
 - [ ] une version utilisant les boucles natives (while, for...) et une version en programmation fonctionnelle avec les méthodes de l'objet array (foreach, filter, map, reduce)
 

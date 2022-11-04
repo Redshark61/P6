@@ -35,7 +35,11 @@ export const handleTags = () => {
 			const $input = document.createElement("input");
 			$input.classList.add("no-btn", "input-light");
 			$input.type = "text";
-			$input.placeholder = `Rechercher un ${$tagBtn.textContent.trim().toLowerCase()}`;
+			const content = $tagBtn.textContent.trim().toLowerCase();
+			$input.placeholder = `Rechercher un ${content
+				.split("")
+				.splice(0, content.length - 1)
+				.join("")}`;
 			$span.style.width = `${width}px`;
 			$button.replaceWith($input);
 			$input.addEventListener("click", (e) => {
