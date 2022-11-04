@@ -96,6 +96,10 @@
   background: #ED6454;
 }
 
+button {
+  cursor: pointer;
+}
+
 .btn {
   padding: 25px 20px;
   border-radius: 5px;
