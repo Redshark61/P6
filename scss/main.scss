@@ -1,9 +1,11 @@
 @use "base/reset";
+@use "base/typo";
 
 @use "./layout/flex";
 @use "./layout/grid";
 @use "./layout/text";
 @use "./layout/list";
+@use "./layout/block";
 
 @use "./components/tag";
 @use "./components/button";

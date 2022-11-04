@@ -13,6 +13,10 @@
   font-family: "DM Sans";
   src: url("../../assets/fonts/DM_Sans/DMSans-Bold.ttf"), url("../../assets/fonts/DM_Sans/DMSans-BoldItalic.ttf"), url("../../assets/fonts/DM_Sans/DMSans-Italic.ttf"), url("../../assets/fonts/DM_Sans/DMSans-Medium.ttf"), url("../../assets/fonts/DM_Sans/DMSans-MediumItalic.ttf"), url("../../assets/fonts/DM_Sans/DMSans-Regular.ttf");
 }
+.c-white {
+  color: #fff;
+}
+
 .flex {
   display: flex;
 }
@@ -48,6 +52,10 @@
   list-style: none;
 }
 
+.block {
+  display: block;
+}
+
 .tag {
   border-radius: 5px;
   padding: 10px 20px;
@@ -67,9 +75,8 @@
   display: flex;
   justify-content: space-between;
 }
-.tag-wrapper.active .fa-chevron-down {
-  transform: rotate(180deg);
-  transition: 0.3s;
+.tag-wrapper:not(.active) > .tag-list {
+  display: none;
 }
 .tag-list {
   padding: 25px 20px;
@@ -135,6 +142,13 @@
 #tag-result {
   width: 100%;
   padding: 25px 20px 15px 0;
+}
+
+.input-light {
+  outline: none;
+  border-bottom: 1px solid black;
+  font-size: 18px;
+  width: 100%;
 }
 
 body {
