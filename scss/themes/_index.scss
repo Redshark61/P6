@@ -68,3 +68,7 @@ section {
 ul.no-list[class*=-w] {
   gap: 2rem 0;
 }
+
+.tag-wrapper:not(.active)>.tag-list {
+  display: none;
+}

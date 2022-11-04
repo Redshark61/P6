@@ -11,6 +11,8 @@
   }
 
   &-wrapper {
+    margin: 0 20px;
+
     &.active {
       .btn {
         width: 100%;
@@ -19,11 +21,20 @@
         display: flex;
         justify-content: space-between;
       }
+
+      .fa-chevron-down {
+        transform: rotate(180deg);
+        transition: 0.3s;
+      }
+
     }
 
-    ul {
-      padding: 25px 20px;
-    }
+  }
+
+  &-list {
+    padding: 25px 20px;
+    border-radius: 0 0 5px 5px;
+    position: absolute;
   }
 }
 
