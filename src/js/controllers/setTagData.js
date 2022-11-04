@@ -59,6 +59,24 @@ const createLi = (text, callback) => {
 	const $li = document.createElement("li");
 	$li.classList.add("cursor-pointer", "hover");
 	$li.textContent = text;
-	$li.onclick = callback;
+	$li.onclick = (e) => {
+		callback();
+		const $tagResult = document.querySelector("#tag-result");
+		/**
+     * <button class="tag-ingredients tag">
+						Coco <i class="fa-regular fa-circle-xmark"></i>
+					</button>
+     */
+		const classType = Array.from(e.target.parentElement.classList).find((className) =>
+			className.includes("tag-")
+		);
+		const $button = document.createElement("button");
+		$button.classList.add(classType, "tag");
+		$button.textContent = text;
+		const $i = document.createElement("i");
+		$i.classList.add("fa-regular", "fa-circle-xmark");
+		$button.appendChild($i);
+		$tagResult.appendChild($button);
+	};
 	return $li;
 };
