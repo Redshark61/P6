@@ -28,7 +28,7 @@ section {
 
   .top,
   .bottom {
-    height: 20vh;
+    height: 30vh;
   }
 
   .top {
@@ -44,12 +44,9 @@ section {
     list-style: none;
   }
 
-  p {
+  p,
+  ul {
     overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
   }
 }
 

@@ -179,7 +179,7 @@ section {
 }
 .dish .top,
 .dish .bottom {
-  height: 20vh;
+  height: 30vh;
 }
 .dish .top {
   background: #C7BEBE;
@@ -191,12 +191,9 @@ section {
 .dish ul {
   list-style: none;
 }
-.dish p {
+.dish p,
+.dish ul {
   overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
 }
 
 [class*=ingredients] {
