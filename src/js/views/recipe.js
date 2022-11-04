@@ -1,31 +1,12 @@
 import { fetchRecipes } from "../models/recipe.js";
 
-export const render = async () => {
-	/**
-   * <article class="dish">
-					<div class="top"></div>
-					<div class="bottom grid grid-2-2">
-						<h2>Limonade de Coco</h2>
-						<h2 class="text-r"><i class="fa-regular fa-clock"></i> 10 min</h2>
-						<ul>
-							<li><strong>name</strong>: quantity</li>
-							<li><strong>name</strong>: quantity</li>
-							<li><strong>name</strong>: quantity</li>
-							<li><strong>name</strong>: quantity</li>
-						</ul>
-						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-							repudiandae corporis distinctio esse ipsum itaque maiores sequi a
-							repellat voluptatibus?poris distinctio esse ipsum itaque maiores sequi a
-							repellat voluptati poris distinctio esse ipsum itaque maiores sequi a
-							repellat voluptatiporis distinctio esse ipsum itaque maiores sequi a
-							repellat voluptatiporis distinctio esse ipsum itaque maiores sequi a
-							repellat voluptati
-						</p>
-					</div>
-				</article>
-   */
-	const recipes = await fetchRecipes();
+let recipes = [];
+export const render = async (filterCallback = () => true) => {
+	if (recipes.length === 0) {
+		recipes = await fetchRecipes();
+	}
+
+	recipes = recipes.filter(filterCallback);
 
 	const $main = document.querySelector("#recipes-root");
 	$main.innerHTML = "";
