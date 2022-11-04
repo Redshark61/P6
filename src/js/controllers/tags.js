@@ -8,7 +8,6 @@ export const handleTags = () => {
 
 	$tagBtns.forEach(($tagBtn) => {
 		$tagBtn.addEventListener("click", (e) => {
-			console.log("click on span 1");
 			toggle($tagBtn);
 		});
 	});
