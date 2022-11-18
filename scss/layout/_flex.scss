@@ -9,6 +9,10 @@
     align-items: center;
   }
 
+  &[class*="-g"] {
+    gap: 2rem;
+  }
+
   &[class*="-w"] {
     flex-wrap: wrap;
     justify-content: space-between;

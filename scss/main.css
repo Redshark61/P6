@@ -26,6 +26,9 @@
 .flex[class*=-c] {
   align-items: center;
 }
+.flex[class*=-g] {
+  gap: 2rem;
+}
 .flex[class*=-w] {
   flex-wrap: wrap;
   justify-content: space-between;

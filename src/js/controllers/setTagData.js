@@ -1,6 +1,9 @@
 import { fetchRecipes } from "../models/recipe.js";
 import { render } from "../views/recipe.js";
 
+/** @type {{text: string, type:string}[]} */
+let tags = [];
+
 export const renderTagsData = async () => {
 	const data = await fetchRecipes();
 	const ingredients = data
@@ -16,10 +19,8 @@ export const renderTagsData = async () => {
 	$ulIngredients.innerHTML = "";
 	$ulIngredients.append(
 		...uniqueIngredients.map((ingredient) => {
-			return createLi(ingredient, () =>
-				render((recipe) =>
-					recipe.ingredients.some((i) => i.ingredient.toLowerCase() === ingredient)
-				)
+			return createLi({ text: ingredient, type: "ingredients" }, () =>
+				render({ type: "ingredients", element: ingredient })
 			);
 		})
 	);
@@ -32,8 +33,8 @@ export const renderTagsData = async () => {
 	$ulAppliances.innerHTML = "";
 	$ulAppliances.append(
 		...uniqueAppliances.map((appliance) => {
-			return createLi(appliance, () =>
-				render((recipe) => recipe.appliance.toLowerCase() === appliance)
+			return createLi({ text: appliance, type: "appliances" }, () =>
+				render({ type: "appliances", element: appliance })
 			);
 		})
 	);
@@ -48,25 +49,27 @@ export const renderTagsData = async () => {
 	$ulUstensils.innerHTML = "";
 	$ulUstensils.append(
 		...uniqueUstensils.map((ustensil) => {
-			return createLi(ustensil, () =>
-				render((recipe) => recipe.ustensils.some((u) => u.toLowerCase() === ustensil))
+			return createLi({ text: ustensil, type: "ustensils" }, () =>
+				render({ type: "ustensils", element: ustensil })
 			);
 		})
 	);
 };
 
-const createLi = (text, callback) => {
+/**
+ * @param {{text: string, type: string}} tagData
+ * @param {()=>{}} callback
+ * @returns {HTMLLIElement}
+ */
+const createLi = (tagData, callback) => {
 	const $li = document.createElement("li");
 	$li.classList.add("cursor-pointer", "hover");
+	const text = tagData.text;
 	$li.textContent = text;
 	$li.onclick = (e) => {
+		tags.push(tagData);
 		callback();
 		const $tagResult = document.querySelector("#tag-result");
-		/**
-     * <button class="tag-ingredients tag">
-						Coco <i class="fa-regular fa-circle-xmark"></i>
-					</button>
-     */
 		const classType = Array.from(e.target.parentElement.classList).find((className) =>
 			className.includes("tag-")
 		);
@@ -76,6 +79,15 @@ const createLi = (text, callback) => {
 		const $i = document.createElement("i");
 		$i.classList.add("fa-regular", "fa-circle-xmark");
 		$button.appendChild($i);
+
+		$button.onclick = (e) => {
+			tags.splice(
+				tags.findIndex((object) => object.text === text),
+				1
+			);
+			render({ type: "remove", element: tags });
+			e.target.closest("button").remove();
+		};
 		$tagResult.appendChild($button);
 	};
 	return $li;

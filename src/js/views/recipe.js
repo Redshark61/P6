@@ -1,12 +1,54 @@
 import { fetchRecipes } from "../models/recipe.js";
 
 let recipes = [];
-export const render = async (filterCallback = () => true) => {
-	if (recipes.length === 0) {
-		recipes = await fetchRecipes();
+let allRecipes = [];
+
+const filterCallbacks = {
+	ingredients(element) {
+		return (recipe) => recipe.ingredients.some((i) => i.ingredient.toLowerCase() === element);
+	},
+	appliances(element) {
+		return (recipe) => recipe.appliance.toLowerCase() === element;
+	},
+	ustensils(element) {
+		return (recipe) => recipe.ustensils.some((u) => u.toLowerCase() === element);
+	},
+};
+
+/**
+ * @param {{type: string, element: {text: string, type: string} | string}} filterType
+ */
+export const render = async (filterType = null) => {
+	if (allRecipes.length === 0) {
+		allRecipes = await fetchRecipes();
+		recipes = allRecipes;
+	} else {
+		console.log("recipes already fetched, returning cached data");
 	}
 
-	recipes = recipes.filter(filterCallback);
+	if (filterType) {
+		switch (filterType.type) {
+			case "ingredients":
+				recipes = recipes.filter(filterCallbacks.ingredients(filterType.element));
+				break;
+			case "appliances":
+				recipes = recipes.filter(filterCallbacks.appliances(filterType.element));
+				break;
+			case "ustensils":
+				recipes = recipes.filter(filterCallbacks.ustensils(filterType.element));
+				break;
+			case "remove":
+				recipes = allRecipes;
+				filterType.element.forEach((filter) => {
+					debugger;
+					recipes = recipes.filter(filterCallbacks[filter.type](filter.text));
+				});
+				break;
+			default:
+				console.error("Invalid filter type");
+				break;
+		}
+	}
 
 	const $main = document.querySelector("#recipes-root");
 	$main.innerHTML = "";
