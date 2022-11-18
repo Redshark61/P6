@@ -8,6 +8,12 @@ export const handleTags = () => {
 
 	$tagBtns.forEach(($tagBtn) => {
 		$tagBtn.addEventListener("click", (e) => {
+			e.target
+				.closest(".tag-wrapper")
+				.parentElement.querySelectorAll(".active")
+				.forEach((el) => {
+					if (el !== e.target.closest(".tag-wrapper")) toggle(el.children[0]);
+				});
 			toggle($tagBtn);
 		});
 	});
