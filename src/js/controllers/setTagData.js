@@ -3,9 +3,18 @@ import { render } from "../views/recipe.js";
 
 /** @type {{text: string, type:string}[]} */
 let tags = [];
+let data;
 
-export const renderTagsData = async () => {
-	const data = await fetchRecipes();
+export const renderTagsData = async (recipes = null) => {
+	if (!recipes) {
+		data = await fetchRecipes();
+	} else {
+		await recipes.then((response) => {
+			data = response;
+			console.log(data);
+		});
+	}
+
 	const ingredients = data
 		.map((recipe) =>
 			recipe.ingredients.map((ingredient) => ingredient.ingredient.toLowerCase())
@@ -68,7 +77,7 @@ const createLi = (tagData, callback) => {
 	$li.textContent = text;
 	$li.onclick = (e) => {
 		tags.push(tagData);
-		callback();
+		const recipes = callback();
 		const $tagResult = document.querySelector("#tag-result");
 		const classType = Array.from(e.target.parentElement.classList).find((className) =>
 			className.includes("tag-")
@@ -89,6 +98,7 @@ const createLi = (tagData, callback) => {
 			e.target.closest("button").remove();
 		};
 		$tagResult.appendChild($button);
+		renderTagsData(recipes);
 	};
 	return $li;
 };

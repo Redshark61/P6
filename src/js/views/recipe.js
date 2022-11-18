@@ -1,3 +1,4 @@
+import { renderTagsData } from "../controllers/setTagData.js";
 import { fetchRecipes } from "../models/recipe.js";
 
 let recipes = [];
@@ -74,4 +75,6 @@ export const render = async (filterType = null) => {
 		`;
 		$main.appendChild($article);
 	});
+
+	return recipes;
 };
