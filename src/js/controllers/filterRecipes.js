@@ -1,5 +1,6 @@
-import { APPLIANCES, INGREDIENTS, REMOVE, USTENSILS } from "../../../@types/constants.js";
+import { ALL, APPLIANCES, INGREDIENTS, REMOVE, USTENSILS } from "../../../@types/constants.js";
 import { fetchRecipes } from "../models/recipe.js";
+import { search } from "./search.js";
 /** @typedef {import('../../../@types/index.js').Recipe} Recipe*/
 
 /** @type {Recipe[]} */
@@ -16,6 +17,17 @@ const filterCallbacks = {
 	},
 	ustensils(element) {
 		return (recipe) => recipe.ustensils.some((u) => u.toLowerCase() === element);
+	},
+	/** @param {string} element */
+	all(element) {
+		return (
+			/** @param {Recipe} recipe*/
+			(recipe) =>
+				recipe.name.toLowerCase().startsWith(element) ||
+				recipe.ingredients.some((i) => i.ingredient.toLowerCase().startsWith(element)) ||
+				recipe.appliance.toLowerCase().startsWith(element) ||
+				recipe.ustensils.some((u) => u.toLowerCase().startsWith(element))
+		);
 	},
 };
 
@@ -43,6 +55,10 @@ export async function filterRecipes(filterType) {
 				filterType.element.forEach((filter) => {
 					recipes = recipes.filter(filterCallbacks[filter.type](filter.text));
 				});
+				search();
+				break;
+			case ALL:
+				recipes = recipes.filter(filterCallbacks.all(filterType.element));
 				break;
 			default:
 				console.error("Invalid filter type");

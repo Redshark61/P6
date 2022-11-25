@@ -160,10 +160,14 @@ function listOnclick(e, tagData, callback, text) {
 			tags.findIndex((object) => object.text === text),
 			1
 		);
-		const recipes = render({ type: REMOVE, element: tags });
 		e.target.closest("button").remove();
-		renderTagsData({ recipes, callback: setWidthTag });
+		searchTag();
 	};
 	$tagResult.appendChild($button);
+	renderTagsData({ recipes, callback: setWidthTag });
+}
+
+export function searchTag() {
+	const recipes = render({ type: REMOVE, element: tags });
 	renderTagsData({ recipes, callback: setWidthTag });
 }
