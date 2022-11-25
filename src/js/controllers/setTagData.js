@@ -6,6 +6,7 @@ let tags = [];
 let data;
 
 export const renderTagsData = async (recipes = null) => {
+	console.info("rendering tags data");
 	if (!recipes) {
 		data = await fetchRecipes();
 	} else {
