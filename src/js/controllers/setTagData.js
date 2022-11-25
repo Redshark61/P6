@@ -94,8 +94,9 @@ const createLi = (tagData, callback) => {
 				tags.findIndex((object) => object.text === text),
 				1
 			);
-			render({ type: "remove", element: tags });
+			const recipes = render({ type: "remove", element: tags });
 			e.target.closest("button").remove();
+			renderTagsData(recipes);
 		};
 		$tagResult.appendChild($button);
 		renderTagsData(recipes);
