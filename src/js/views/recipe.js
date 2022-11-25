@@ -21,7 +21,9 @@ export const render = async (filterType = null) => {
 					${recipe.ingredients
 						.map(
 							(ingredient) =>
-								`<li><strong>${ingredient.ingredient}</strong>: ${ingredient.quantity}</li>`
+								`<li><strong>${ingredient.ingredient}</strong>${
+									ingredient.quantity ? " : " + ingredient.quantity : ""
+								}</li>`
 						)
 						.join("")}
 				</ul>
