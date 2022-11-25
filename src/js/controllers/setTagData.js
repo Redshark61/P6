@@ -122,7 +122,7 @@ const createLi = (tagData, callback) => {
 	const text = tagData.text;
 	$li.textContent = text;
 	$li.onclick = (e) => {
-		listClick(e, tagData, callback, text);
+		listOnclick(e, tagData, callback, text);
 	};
 	return $li;
 };
@@ -130,10 +130,18 @@ const createLi = (tagData, callback) => {
 const setWidthTag = () => {
 	const $list = document.querySelector(".tag-wrapper.active ul");
 	const $span = document.querySelector(".tag-wrapper.active span");
-	setWidth($list, $span);
+	if ($list) {
+		setWidth($list, $span);
+	}
 };
 
-function listClick(e, tagData, callback, text) {
+/**
+ * @param {MouseEvent} e
+ * @param {{text: string, type: string}} tagData
+ * @param {()=>{}} callback
+ * @param {string} text
+ */
+function listOnclick(e, tagData, callback, text) {
 	tags.push(tagData);
 	const recipes = callback();
 	const $tagResult = document.querySelector("#tag-result");
