@@ -1,6 +1,8 @@
 import { fetchRecipes } from "../models/recipe.js";
 
+/** @type {import("../models/recipe.js").Recipe[]} */
 let recipes = [];
+/** @type {import("../models/recipe.js").Recipe[]} */
 let allRecipes = [];
 
 const filterCallbacks = {
