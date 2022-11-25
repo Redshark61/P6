@@ -23,7 +23,7 @@ export const render = async (filterType = null) => {
 							(ingredient) =>
 								`<li><strong>${ingredient.ingredient}</strong>${
 									ingredient.quantity ? " : " + ingredient.quantity : ""
-								}</li>`
+								} ${ingredient.unit ?? ""}</li>`
 						)
 						.join("")}
 				</ul>
