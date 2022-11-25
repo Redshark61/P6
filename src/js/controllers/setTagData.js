@@ -80,30 +80,7 @@ const createLi = (tagData, callback) => {
 	const text = tagData.text;
 	$li.textContent = text;
 	$li.onclick = (e) => {
-		tags.push(tagData);
-		const recipes = callback();
-		const $tagResult = document.querySelector("#tag-result");
-		const classType = Array.from(e.target.parentElement.classList).find((className) =>
-			className.includes("tag-")
-		);
-		const $button = document.createElement("button");
-		$button.classList.add(classType, "tag");
-		$button.textContent = text;
-		const $i = document.createElement("i");
-		$i.classList.add("fa-regular", "fa-circle-xmark");
-		$button.appendChild($i);
-
-		$button.onclick = (e) => {
-			tags.splice(
-				tags.findIndex((object) => object.text === text),
-				1
-			);
-			const recipes = render({ type: "remove", element: tags });
-			e.target.closest("button").remove();
-			renderTagsData(recipes, setWidthTag);
-		};
-		$tagResult.appendChild($button);
-		renderTagsData(recipes, setWidthTag);
+		listClick(e, tagData, callback, text);
 	};
 	return $li;
 };
@@ -113,3 +90,30 @@ const setWidthTag = () => {
 	const $span = document.querySelector(".tag-wrapper.active span");
 	setWidth($list, $span);
 };
+
+function listClick(e, tagData, callback, text) {
+	tags.push(tagData);
+	const recipes = callback();
+	const $tagResult = document.querySelector("#tag-result");
+	const classType = Array.from(e.target.parentElement.classList).find((className) =>
+		className.includes("tag-")
+	);
+	const $button = document.createElement("button");
+	$button.classList.add(classType, "tag");
+	$button.textContent = text;
+	const $i = document.createElement("i");
+	$i.classList.add("fa-regular", "fa-circle-xmark");
+	$button.appendChild($i);
+
+	$button.onclick = (e) => {
+		tags.splice(
+			tags.findIndex((object) => object.text === text),
+			1
+		);
+		const recipes = render({ type: "remove", element: tags });
+		e.target.closest("button").remove();
+		renderTagsData(recipes, setWidthTag);
+	};
+	$tagResult.appendChild($button);
+	renderTagsData(recipes, setWidthTag);
+}
