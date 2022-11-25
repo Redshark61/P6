@@ -26,12 +26,15 @@
 				<div id="search"><input type="text" /></div>
 				<div id="tag-result" class="flex flex-g"></div>
 				<div class="flex">
-					<div class="tag-wrapper no-left">
+					<div class="tag-wrapper no-left" data-tag-type="ingredients">
 						<span class="block btn tag-ingredients">
 							<button class="no-btn c-white">Ingrédients</button
 							><i class="fa-sharp fa-solid fa-chevron-down"></i>
 						</span>
-						<ul class="tag-ingredients tag-list no-left no-list flex flex-w-3">
+						<ul
+							data-tag-type="INGREDIENTS"
+							class="tag-ingredients tag-list no-left no-list flex flex-w-3"
+						>
 							<li>lorem</li>
 							<li>lorem</li>
 							<li>lorem</li>
@@ -43,7 +46,7 @@
 							<li>lorem</li>
 						</ul>
 					</div>
-					<div class="tag-wrapper">
+					<div class="tag-wrapper" data-tag-type="appliances">
 						<span class="block btn tag-machine">
 							<button class="no-btn c-white">Appareils</button
 							><i class="fa-sharp fa-solid fa-chevron-down"></i>
@@ -60,7 +63,7 @@
 							<li>lorem</li>
 						</ul>
 					</div>
-					<div class="tag-wrapper">
+					<div class="tag-wrapper" data-tag-type="ustensils">
 						<span class="block btn tag-tools">
 							<button class="no-btn c-white">Ustensiles</button
 							><i class="fa-sharp fa-solid fa-chevron-down"></i>
