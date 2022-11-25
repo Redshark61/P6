@@ -110,10 +110,10 @@ function listClick(e, tagData, callback, text) {
 			tags.findIndex((object) => object.text === text),
 			1
 		);
-		const recipes = render({ type: "remove", element: tags });
+		const recipes = render({ type: REMOVE, element: tags });
 		e.target.closest("button").remove();
-		renderTagsData(recipes, setWidthTag);
+		renderTagsData({ recipes, callback: setWidthTag });
 	};
 	$tagResult.appendChild($button);
-	renderTagsData(recipes, setWidthTag);
+	renderTagsData({ recipes, callback: setWidthTag });
 }

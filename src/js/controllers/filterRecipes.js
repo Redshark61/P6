@@ -29,16 +29,16 @@ export async function filterRecipes(filterType) {
 
 	if (filterType) {
 		switch (filterType.type) {
-			case "ingredients":
+			case INGREDIENTS:
 				recipes = recipes.filter(filterCallbacks.ingredients(filterType.element));
 				break;
-			case "appliances":
+			case APPLIANCES:
 				recipes = recipes.filter(filterCallbacks.appliances(filterType.element));
 				break;
-			case "ustensils":
+			case USTENSILS:
 				recipes = recipes.filter(filterCallbacks.ustensils(filterType.element));
 				break;
-			case "remove":
+			case REMOVE:
 				recipes = allRecipes;
 				filterType.element.forEach((filter) => {
 					recipes = recipes.filter(filterCallbacks[filter.type](filter.text));
