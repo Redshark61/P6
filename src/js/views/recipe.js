@@ -1,4 +1,4 @@
-import { filterRecipes } from "./filterRecipes.js";
+import { filterRecipes } from "../controllers/filterRecipes.js";
 
 /**
  * @param {{type: string, element: {text: string, type: string} | string}} filterType
