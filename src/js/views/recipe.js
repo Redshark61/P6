@@ -41,7 +41,6 @@ export const render = async (filterType = null) => {
 			case "remove":
 				recipes = allRecipes;
 				filterType.element.forEach((filter) => {
-					debugger;
 					recipes = recipes.filter(filterCallbacks[filter.type](filter.text));
 				});
 				break;
