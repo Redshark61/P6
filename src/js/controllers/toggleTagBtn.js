@@ -1,3 +1,5 @@
+import { setWidth } from "./setWidth.js";
+
 export const handleTags = () => {
 	const $tagBtns = document.querySelectorAll(".tag-wrapper > span");
 	const buttons = {
@@ -34,7 +36,6 @@ export const handleTags = () => {
 		}
 
 		$parent.classList.toggle("active");
-		const width = $list.clientWidth;
 
 		if ($parent.classList.contains("active")) {
 			const $input = document.createElement("input");
@@ -45,7 +46,7 @@ export const handleTags = () => {
 				.split("")
 				.splice(0, content.length - 1)
 				.join("")}`;
-			$span.style.width = `${width}px`;
+			setWidth($list, $span);
 			$button.replaceWith($input);
 			$input.addEventListener("click", (e) => {
 				e.stopPropagation();

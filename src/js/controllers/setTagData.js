@@ -1,11 +1,12 @@
 import { fetchRecipes } from "../models/recipe.js";
 import { render } from "../views/recipe.js";
+import { setWidth } from "./setWidth.js";
 
 /** @type {{text: string, type:string}[]} */
 let tags = [];
 let data;
 
-export const renderTagsData = async (recipes = null) => {
+export const renderTagsData = async (recipes = null, callback = () => {}) => {
 	console.info("rendering tags data");
 	if (!recipes) {
 		data = await fetchRecipes();
@@ -64,6 +65,8 @@ export const renderTagsData = async (recipes = null) => {
 			);
 		})
 	);
+
+	callback();
 };
 
 /**
@@ -97,10 +100,16 @@ const createLi = (tagData, callback) => {
 			);
 			const recipes = render({ type: "remove", element: tags });
 			e.target.closest("button").remove();
-			renderTagsData(recipes);
+			renderTagsData(recipes, setWidthTag);
 		};
 		$tagResult.appendChild($button);
-		renderTagsData(recipes);
+		renderTagsData(recipes, setWidthTag);
 	};
 	return $li;
+};
+
+const setWidthTag = () => {
+	const $list = document.querySelector(".tag-wrapper.active ul");
+	const $span = document.querySelector(".tag-wrapper.active span");
+	setWidth($list, $span);
 };
