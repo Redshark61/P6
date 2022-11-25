@@ -1,71 +1,113 @@
+import { APPLIANCES, INGREDIENTS, REMOVE, USTENSILS } from "../../../@types/constants.js";
 import { fetchRecipes } from "../models/recipe.js";
 import { render } from "../views/recipe.js";
 import { setWidth } from "./setWidth.js";
 
+/** @typedef {import('../../../@types/index.js').Recipe} Recipe*/
 /** @type {{text: string, type:string}[]} */
 let tags = [];
 let data;
 
-export const renderTagsData = async (recipes = null, callback = () => {}) => {
+/**
+ * @param {{
+ * recipes: Recipe[],
+ * callback: ()=>{},
+ * tagFilter: {type: string, callback: ()=>{}}
+ * }}
+ */
+export const renderTagsData = async ({
+	recipes = null,
+	callback = () => {},
+	tagFilter = { type: "" },
+}) => {
 	console.info("rendering tags data");
-	if (!recipes) {
+	if (!recipes && !data) {
 		data = await fetchRecipes();
-	} else {
+	} else if (recipes) {
 		await recipes.then((response) => {
 			data = response;
 			console.log(data);
 		});
 	}
-
-	const ingredients = data
+	let ingredients = data
 		.map((recipe) =>
 			recipe.ingredients.map((ingredient) => ingredient.ingredient.toLowerCase())
 		)
 		.flat();
 	// remove duplicates
-	const uniqueIngredients = [...new Set(ingredients)];
+	let uniqueIngredients = [...new Set(ingredients)];
 	// sort alphabetically
 	uniqueIngredients.sort((a, b) => a.localeCompare(b));
 	const $ulIngredients = document.querySelector("ul.tag-ingredients");
 	$ulIngredients.innerHTML = "";
-	$ulIngredients.append(
-		...uniqueIngredients.map((ingredient) => {
-			return createLi({ text: ingredient, type: "ingredients" }, () =>
-				render({ type: "ingredients", element: ingredient })
-			);
-		})
-	);
 
-	const appliances = data.map((recipe) => recipe.appliance.toLowerCase());
-	const uniqueAppliances = [...new Set(appliances)];
+	let appliances = data.map((recipe) => recipe.appliance.toLowerCase());
+	let uniqueAppliances = [...new Set(appliances)];
 	uniqueAppliances.sort((a, b) => a.localeCompare(b));
 	const $ulAppliances = document.querySelector("ul.tag-machine");
 
 	$ulAppliances.innerHTML = "";
-	$ulAppliances.append(
-		...uniqueAppliances.map((appliance) => {
-			return createLi({ text: appliance, type: "appliances" }, () =>
-				render({ type: "appliances", element: appliance })
-			);
-		})
-	);
 
-	const ustensils = data
+	let ustensils = data
 		.map((recipe) => recipe.ustensils.map((ustensil) => ustensil.toLowerCase()))
 		.flat();
-	const uniqueUstensils = [...new Set(ustensils)];
+	let uniqueUstensils = [...new Set(ustensils)];
 	uniqueUstensils.sort((a, b) => a.localeCompare(b));
 	const $ulUstensils = document.querySelector("ul.tag-tools");
 
 	$ulUstensils.innerHTML = "";
-	$ulUstensils.append(
-		...uniqueUstensils.map((ustensil) => {
-			return createLi({ text: ustensil, type: "ustensils" }, () =>
-				render({ type: "ustensils", element: ustensil })
+
+	ingredients = uniqueIngredients;
+	appliances = uniqueAppliances;
+	ustensils = uniqueUstensils;
+
+	switch (tagFilter.type) {
+		case INGREDIENTS: {
+			ingredients = uniqueIngredients.filter((element) => tagFilter.callback(element));
+			break;
+		}
+		case APPLIANCES: {
+			appliances = uniqueAppliances.filter((element) => {
+				tagFilter.callback(element);
+			});
+			break;
+		}
+		case USTENSILS: {
+			ustensils = uniqueUstensils.filter((element) => {
+				tagFilter.callback(element);
+			});
+			break;
+		}
+		case "":
+			break;
+		default:
+			console.warn("no tag type found");
+			break;
+	}
+
+	$ulIngredients.append(
+		...ingredients.map((ingredient) => {
+			return createLi({ text: ingredient, type: INGREDIENTS }, () =>
+				render({ type: INGREDIENTS, element: ingredient })
 			);
 		})
 	);
 
+	$ulAppliances.append(
+		...appliances.map((appliance) => {
+			return createLi({ text: appliance, type: APPLIANCES }, () =>
+				render({ type: APPLIANCES, element: appliance })
+			);
+		})
+	);
+
+	$ulUstensils.append(
+		...ustensils.map((ustensil) => {
+			return createLi({ text: ustensil, type: USTENSILS }, () =>
+				render({ type: USTENSILS, element: ustensil })
+			);
+		})
+	);
 	callback();
 };
 

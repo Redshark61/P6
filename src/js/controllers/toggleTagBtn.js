@@ -1,3 +1,4 @@
+import { renderTagsData } from "./setTagData.js";
 import { setWidth } from "./setWidth.js";
 
 export const handleTags = () => {
@@ -51,6 +52,7 @@ export const handleTags = () => {
 			$input.addEventListener("click", (e) => {
 				e.stopPropagation();
 			});
+			$input.onkeyup = listOnkeyup;
 		} else {
 			$span.style.width = "auto";
 			const $button = document.createElement("button");
@@ -62,3 +64,23 @@ export const handleTags = () => {
 		}
 	};
 };
+
+/**
+ * @param {KeyboardEvent} e
+ */
+function listOnkeyup(e) {
+	console.log(e.target.value);
+	const tagFilter = {
+		type: e.target.closest(".tag-wrapper").getAttribute("data-tag-type"),
+		callback:
+			/**
+			 * @param {string} tag
+			 * @returns boolean
+			 */
+			(tag) => {
+				return tag.startsWith(e.target.value);
+			},
+	};
+
+	renderTagsData({ tagFilter });
+}

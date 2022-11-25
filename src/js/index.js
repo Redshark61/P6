@@ -4,4 +4,4 @@ import { render } from "./views/recipe.js";
 
 render();
 handleTags();
-renderTagsData();
+renderTagsData({});
