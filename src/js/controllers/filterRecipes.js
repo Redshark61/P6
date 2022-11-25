@@ -1,8 +1,10 @@
+import { APPLIANCES, INGREDIENTS, REMOVE, USTENSILS } from "../../../@types/constants.js";
 import { fetchRecipes } from "../models/recipe.js";
+/** @typedef {import('../../../@types/index.js').Recipe} Recipe*/
 
-/** @type {import("../models/recipe.js").Recipe[]} */
+/** @type {Recipe[]} */
 let recipes = [];
-/** @type {import("../models/recipe.js").Recipe[]} */
+/** @type {Recipe[]} */
 let allRecipes = [];
 
 const filterCallbacks = {

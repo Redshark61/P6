@@ -1,20 +1,4 @@
-/**
- * @typedef {{
- * ingredient: string,
- * quantity?: number | string,
- * unit?: string
- * }} Ingredient
- * @typedef {{
- * id:number,
- * name:string,
- * servings:number,
- * ingredients:Ingredient[],
- * time:number,
- * description:string,
- * appliance:string,
- * ustensils:string[]
- * }} Recipe
- */
+/** @typedef {import('../../../@types/index.js').Recipe} Recipe*/
 
 let recipes = [];
 /**
