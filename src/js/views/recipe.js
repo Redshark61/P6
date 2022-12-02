@@ -39,14 +39,7 @@ chercher «tarte aux pommes», «poisson», etc</p>`;
 				<h2>${recipe.name}</h2>
 				<h2 class="text-r"><i class="fa-regular fa-clock"></i> ${recipe.time} min</h2>
 				<ul>
-					${recipe.ingredients
-						.map(
-							(ingredient) =>
-								`<li><strong>${ingredient.ingredient}</strong>${
-									ingredient.quantity ? " : " + ingredient.quantity : ""
-								} ${ingredient.unit ?? ""}</li>`
-						)
-						.join("")}
+					${ul(recipe)}
 				</ul>
 				<p>${recipe.description}</p>
 			</div>
