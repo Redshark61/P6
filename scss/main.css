@@ -231,4 +231,14 @@ ul.no-list[class*=-w] {
 .hover:hover {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.1s ease-in-out;
+}
+
+.no-recipes {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #D04F4F;
+  padding: 2rem;
+  border-radius: 5px;
+  background: rgba(208, 79, 79, 0.2);
 }/*# sourceMappingURL=main.css.map */
