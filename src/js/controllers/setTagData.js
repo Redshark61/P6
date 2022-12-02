@@ -163,6 +163,7 @@ function listOnclick(e, tagData, callback, text) {
 		e.target.closest("button").remove();
 		searchTag();
 	};
+	e.target.closest(".tag-wrapper").querySelector("input").value = "";
 	$tagResult.appendChild($button);
 	renderTagsData({ recipes, callback: setWidthTag });
 }
