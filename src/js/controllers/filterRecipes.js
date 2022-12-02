@@ -56,25 +56,9 @@ export async function filterRecipes(filterType) {
 				});
 				search();
 				break;
-			case ALL: {
-				if (!filterType.element) {
-					break;
-				}
-				const newRecipes = [];
-				for (let i = 0; i < recipes.length; i++) {
-					if (
-						recipes[i].name.toLowerCase().includes(filterType.element) ||
-						recipes[i].ingredients.some((i) =>
-							i.ingredient.toLowerCase().startsWith(filterType.element)
-						) ||
-						recipes[i].description.toLowerCase().includes(filterType.element)
-					) {
-						newRecipes.push(recipes[i]);
-					}
-				}
-				recipes = newRecipes;
+			case ALL:
+				recipes = recipes.filter(filterCallbacks.all(filterType.element));
 				break;
-			}
 			default:
 				console.error("Invalid filter type");
 				break;
