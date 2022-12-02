@@ -23,10 +23,9 @@ const filterCallbacks = {
 		return (
 			/** @param {Recipe} recipe*/
 			(recipe) =>
-				recipe.name.toLowerCase().startsWith(element) ||
+				recipe.name.toLowerCase().includes(element) ||
 				recipe.ingredients.some((i) => i.ingredient.toLowerCase().startsWith(element)) ||
-				recipe.appliance.toLowerCase().startsWith(element) ||
-				recipe.ustensils.some((u) => u.toLowerCase().startsWith(element))
+				recipe.description.toLowerCase().includes(element)
 		);
 	},
 };
