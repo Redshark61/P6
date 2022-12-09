@@ -13,6 +13,10 @@
   font-family: "DM Sans";
   src: url("../../assets/fonts/DM_Sans/DMSans-Bold.ttf"), url("../../assets/fonts/DM_Sans/DMSans-BoldItalic.ttf"), url("../../assets/fonts/DM_Sans/DMSans-Italic.ttf"), url("../../assets/fonts/DM_Sans/DMSans-Medium.ttf"), url("../../assets/fonts/DM_Sans/DMSans-MediumItalic.ttf"), url("../../assets/fonts/DM_Sans/DMSans-Regular.ttf");
 }
+@font-face {
+  font-family: "Roboto";
+  src: url("../../assets/fonts/Roboto/Roboto-Regular.ttf"), url("../../assets/fonts/Roboto/Roboto-Black.ttf"), url("../../assets/fonts/Roboto/Roboto-BlackItalic.ttf"), url("../../assets/fonts/Roboto/Roboto-Bold.ttf"), url("../../assets/fonts/Roboto/Roboto-BoldItalic.ttf"), url("../../assets/fonts/Roboto/Roboto-Italic.ttf"), url("../../assets/fonts/Roboto/Roboto-Light.ttf"), url("../../assets/fonts/Roboto/Roboto-LightItalic.ttf"), url("../../assets/fonts/Roboto/Roboto-Medium.ttf"), url("../../assets/fonts/Roboto/Roboto-MediumItalic.ttf"), url("../../assets/fonts/Roboto/Roboto-Thin.ttf");
+}
 .c-white {
   color: #fff;
 }
@@ -87,6 +91,12 @@
   position: absolute;
   max-width: 60vw;
 }
+.tag-list > li {
+  color: #fff;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 18px;
+}
 
 .tag-ingredients {
   background: #3282F7;
@@ -152,11 +162,39 @@ button {
   padding: 25px 20px 15px 0;
 }
 
-.input-light {
+.input-light::-moz-placeholder {
   outline: none;
-  border-bottom: 1px solid black;
+  color: #FFFFFF;
+  opacity: 0.5;
+  font-weight: 700;
   font-size: 18px;
   width: 100%;
+  letter-spacing: 2px;
+}
+
+.input-light:-ms-input-placeholder {
+  outline: none;
+  color: #FFFFFF;
+  opacity: 0.5;
+  font-weight: 700;
+  font-size: 18px;
+  width: 100%;
+  letter-spacing: 2px;
+}
+
+.input-light,
+.input-light::placeholder {
+  outline: none;
+  color: #FFFFFF;
+  opacity: 0.5;
+  font-weight: 700;
+  font-size: 18px;
+  width: 100%;
+  letter-spacing: 2px;
+}
+
+.input-light {
+  opacity: 1;
 }
 
 body {
@@ -187,7 +225,7 @@ section {
 }
 .dish .top,
 .dish .bottom {
-  height: 30vh;
+  height: 25vh;
 }
 .dish .top {
   background: #C7BEBE;
@@ -202,6 +240,38 @@ section {
 .dish p,
 .dish ul {
   overflow: hidden;
+}
+.dish p {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  color: #000000;
+}
+.dish h2 {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000000;
+}
+.dish li {
+  font-family: "Lato";
+  font-style: normal;
+  font-size: 12px;
+  line-height: 14px;
+  color: #000000;
+}
+.dish li > strong {
+  font-weight: 700;
+}
+.dish .text-r {
+  font-family: Lato;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
 }
 
 [class*=ingredients] {

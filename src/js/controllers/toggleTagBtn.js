@@ -69,7 +69,6 @@ export const handleTags = () => {
  * @param {KeyboardEvent} e
  */
 function listOnkeyup(e) {
-	console.log(e.target.value);
 	const tagFilter = {
 		type: e.target.closest(".tag-wrapper").getAttribute("data-tag-type"),
 		callback:
@@ -78,7 +77,7 @@ function listOnkeyup(e) {
 			 * @returns boolean
 			 */
 			(tag) => {
-				return tag.startsWith(e.target.value);
+				return tag.toLowerCase().startsWith(e.target.value.toLowerCase());
 			},
 	};
 
