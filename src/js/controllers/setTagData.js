@@ -66,15 +66,11 @@ export const renderTagsData = async ({
 			break;
 		}
 		case APPLIANCES: {
-			appliances = uniqueAppliances.filter((element) => {
-				tagFilter.callback(element);
-			});
+			appliances = uniqueAppliances.filter((element) => tagFilter.callback(element));
 			break;
 		}
 		case USTENSILS: {
-			ustensils = uniqueUstensils.filter((element) => {
-				tagFilter.callback(element);
-			});
+			ustensils = uniqueUstensils.filter((element) => tagFilter.callback(element));
 			break;
 		}
 		case "":
