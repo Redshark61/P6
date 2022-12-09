@@ -26,9 +26,9 @@ export const renderTagsData = async ({
 	} else if (recipes) {
 		await recipes.then((response) => {
 			data = response;
-			console.log(data);
 		});
 	}
+
 	let ingredients = data
 		.map((recipe) =>
 			recipe.ingredients.map((ingredient) => ingredient.ingredient.toLowerCase())
@@ -45,7 +45,6 @@ export const renderTagsData = async ({
 	let uniqueAppliances = [...new Set(appliances)];
 	uniqueAppliances.sort((a, b) => a.localeCompare(b));
 	const $ulAppliances = document.querySelector("ul.tag-machine");
-
 	$ulAppliances.innerHTML = "";
 
 	let ustensils = data

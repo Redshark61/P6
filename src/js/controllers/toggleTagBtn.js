@@ -69,7 +69,6 @@ export const handleTags = () => {
  * @param {KeyboardEvent} e
  */
 function listOnkeyup(e) {
-	console.log(e.target.value);
 	const tagFilter = {
 		type: e.target.closest(".tag-wrapper").getAttribute("data-tag-type"),
 		callback:

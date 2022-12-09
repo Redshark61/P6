@@ -23,8 +23,6 @@ export async function filterRecipes(filterType) {
 	if (allRecipes.length === 0) {
 		allRecipes = await fetchRecipes();
 		recipes = allRecipes;
-	} else {
-		console.log("recipes already fetched, returning cached data");
 	}
 
 	if (filterType) {
