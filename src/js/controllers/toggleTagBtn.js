@@ -77,7 +77,7 @@ function listOnkeyup(e) {
 			 * @returns boolean
 			 */
 			(tag) => {
-				return tag.startsWith(e.target.value);
+				return tag.toLowerCase().startsWith(e.target.value.toLowerCase());
 			},
 	};
 
