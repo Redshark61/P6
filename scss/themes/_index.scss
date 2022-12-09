@@ -28,7 +28,7 @@ section {
 
   .top,
   .bottom {
-    height: 30vh;
+    height: 25vh;
   }
 
   .top {
@@ -47,6 +47,43 @@ section {
   p,
   ul {
     overflow: hidden;
+  }
+
+  p {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 100%;
+    color: #000000;
+  }
+
+  h2 {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #000000;
+  }
+
+  li {
+    font-family: 'Lato';
+    font-style: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: #000000;
+
+    &>strong {
+      font-weight: 700;
+    }
+  }
+
+  .text-r {
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
   }
 }
 
