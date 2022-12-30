@@ -5,9 +5,30 @@ import { filterRecipes } from "../controllers/filterRecipes.js";
  */
 export const render = async (filterType = null) => {
 	const recipes = await filterRecipes(filterType);
-
 	const $main = document.querySelector("#recipes-root");
 	$main.innerHTML = "";
+
+	if (!recipes.length) {
+		$main.innerHTML = `<p class="no-recipes
+		">Aucune recette ne correspond à votre critère... vous pouvez
+chercher «tarte aux pommes», «poisson», etc</p>`;
+		$main.classList.remove("flex-w-3");
+		return recipes;
+	}
+
+	if (!$main.classList.contains("flex-w-3")) {
+		$main.classList.add("flex-w-3");
+	}
+
+	const ul = (recipe) =>
+		recipe.ingredients
+			.map(
+				(ingredient) =>
+					`<li><strong>${ingredient.ingredient}</strong>${
+						ingredient.quantity ? " : " + ingredient.quantity : ""
+					} ${ingredient.unit ?? ""}</li>`
+			)
+			.join("");
 
 	recipes.forEach((recipe) => {
 		const $article = document.createElement("article");
@@ -18,14 +39,7 @@ export const render = async (filterType = null) => {
 				<h2>${recipe.name}</h2>
 				<h2 class="text-r"><i class="fa-regular fa-clock"></i> ${recipe.time} min</h2>
 				<ul>
-					${recipe.ingredients
-						.map(
-							(ingredient) =>
-								`<li><strong>${ingredient.ingredient}</strong>${
-									ingredient.quantity ? " : " + ingredient.quantity : ""
-								} ${ingredient.unit ?? ""}</li>`
-						)
-						.join("")}
+					${ul(recipe)}
 				</ul>
 				<p>${recipe.description}</p>
 			</div>
