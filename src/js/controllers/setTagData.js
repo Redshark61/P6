@@ -9,6 +9,7 @@ let tags = [];
 let data;
 
 /**
+ * @description Render the tags list item
  * @param {{
  * recipes: Recipe[],
  * callback: ()=>{},
@@ -20,7 +21,6 @@ export const renderTagsData = async ({
 	callback = () => {},
 	tagFilter = { type: "" },
 }) => {
-	console.info("rendering tags data");
 	if (!recipes && !data) {
 		data = await fetchRecipes();
 	} else if (recipes) {
@@ -29,6 +29,7 @@ export const renderTagsData = async ({
 		});
 	}
 
+	// get all ingredients
 	let ingredients = data
 		.map((recipe) =>
 			recipe.ingredients.map((ingredient) => ingredient.ingredient.toLowerCase())
@@ -53,13 +54,13 @@ export const renderTagsData = async ({
 	let uniqueUstensils = [...new Set(ustensils)];
 	uniqueUstensils.sort((a, b) => a.localeCompare(b));
 	const $ulUstensils = document.querySelector("ul.tag-tools");
-
 	$ulUstensils.innerHTML = "";
 
 	ingredients = uniqueIngredients;
 	appliances = uniqueAppliances;
 	ustensils = uniqueUstensils;
 
+	// reduce the number of item in the list according to what's type in the tag input
 	switch (tagFilter.type) {
 		case INGREDIENTS: {
 			ingredients = uniqueIngredients.filter((element) => tagFilter.callback(element));
@@ -107,6 +108,7 @@ export const renderTagsData = async ({
 };
 
 /**
+ * @description Create a list item
  * @param {{text: string, type: string}} tagData
  * @param {()=>{}} callback
  * @returns {HTMLLIElement}
@@ -122,6 +124,9 @@ const createLi = (tagData, callback) => {
 	return $li;
 };
 
+/**
+ * @description Set the width of the tag list
+ */
 const setWidthTag = () => {
 	const $list = document.querySelector(".tag-wrapper.active ul");
 	const $span = document.querySelector(".tag-wrapper.active span");
@@ -137,6 +142,7 @@ const setWidthTag = () => {
  * @param {string} text
  */
 function listOnclick(e, tagData, callback, text) {
+	// add the clicked tag to the tag list
 	tags.push(tagData);
 	const recipes = callback();
 	const $tagResult = document.querySelector("#tag-result");
@@ -150,12 +156,14 @@ function listOnclick(e, tagData, callback, text) {
 	$i.classList.add("fa-regular", "fa-circle-xmark");
 	$button.appendChild($i);
 
+	// remove the tag from the tag list when the button is clicked
 	$button.onclick = (e) => {
 		tags.splice(
 			tags.findIndex((object) => object.text === text),
 			1
 		);
 		e.target.closest("button").remove();
+		// re-render all recipes since a tag has been removed
 		searchTag();
 	};
 	e.target.closest(".tag-wrapper").querySelector("input").value = "";
@@ -163,7 +171,11 @@ function listOnclick(e, tagData, callback, text) {
 	renderTagsData({ recipes, callback: setWidthTag });
 }
 
+/**
+ * Is used to re-render all recipes based on the selected tags + the search bar
+ */
 export function searchTag() {
+	console.log(tags);
 	const recipes = render({ type: REMOVE, element: tags });
 	renderTagsData({ recipes, callback: setWidthTag });
 }

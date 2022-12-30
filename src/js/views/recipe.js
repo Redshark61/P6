@@ -1,7 +1,10 @@
 import { filterRecipes } from "../controllers/filterRecipes.js";
+/** @typedef {import('../../../@types/index.js').Recipe} Recipe*/
 
 /**
  * @param {{type: string, element: {text: string, type: string} | string}} filterType
+ * @returns {Promise<Recipe[]>}
+ * @description Render recipes in the DOM as HTML
  */
 export const render = async (filterType = null) => {
 	const recipes = await filterRecipes(filterType);

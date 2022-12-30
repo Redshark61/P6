@@ -2,7 +2,7 @@
 
 let recipes = [];
 /**
- * @returns {Promise<Recipe[]>}
+ * @returns {Promise<Recipe[]>} recipes
  */
 export const fetchRecipes = async () => {
 	if (recipes.length === 0) {
