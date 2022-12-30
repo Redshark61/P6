@@ -11,11 +11,8 @@ export const search = () => {
 
 	$input.onkeyup = (e) => {
 		const value = e.target.value.trim();
-		if (!value.length) {
+		if (!value.length || value.length < previous.length) {
 			searchTag();
-		} else if (value.length < previous.length) {
-			searchTag();
-			render({ type: ALL, element: value.toLowerCase() });
 		} else if (value.length >= 3) {
 			render({ type: ALL, element: value.toLowerCase() });
 		}
