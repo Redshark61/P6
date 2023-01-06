@@ -25,7 +25,7 @@ const filterCallbacks = {
 			/** @param {Recipe} recipe*/
 			(recipe) =>
 				formatValue(recipe.name).includes(element) ||
-				recipe.ingredients.some((i) => formatValue(i.ingredient).startsWith(element)) ||
+				recipe.ingredients.some((i) => formatValue(i.ingredient).includes(element)) ||
 				formatValue(recipe.description).includes(element)
 		);
 	},
