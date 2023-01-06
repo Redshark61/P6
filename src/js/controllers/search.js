@@ -9,6 +9,7 @@ export const search = async () => {
 	const $input = document.querySelector("#search>input");
 
 	const recipes = render({ type: ALL, element: formatValue($input.value) });
+	renderTagsData({ recipes });
 
 	$input.onkeyup = async (e) => {
 		const value = formatValue(e.target.value);
@@ -19,6 +20,7 @@ export const search = async () => {
 		} else if (value.length >= 3) {
 			// otherwise, we can search using the value
 			const recipes = render({ type: ALL, element: value.toLowerCase() });
+			renderTagsData({ recipes });
 		}
 		previous = value;
 	};
