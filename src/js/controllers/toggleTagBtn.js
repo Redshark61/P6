@@ -1,5 +1,5 @@
 import { renderTagsData } from "./setTagData.js";
-import { setWidthTag } from "./setWidth.js";
+import { setWidthTag } from "../../utils/setWidth.js";
 
 export const handleTags = () => {
 	const $tagBtns = document.querySelectorAll(".tag-wrapper > span");
