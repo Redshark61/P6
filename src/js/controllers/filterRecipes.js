@@ -1,4 +1,5 @@
 import { ALL, APPLIANCES, INGREDIENTS, REMOVE, USTENSILS } from "../../../@types/constants.js";
+import { formatValue } from "../../utils/formatValue.js";
 import { fetchRecipes } from "../models/recipe.js";
 import { search } from "./search.js";
 /** @typedef {import('../../../@types/index.js').Recipe} Recipe*/
@@ -77,12 +78,14 @@ export async function filterRecipes(filterType) {
 				// filtering the current recipes based on their name, ingredients or description
 				// passed in the search input
 				for (let i = 0; i < recipes.length; i++) {
+					const name = formatValue(recipes[i].name);
+					const ingredients = recipes[i].ingredients.map((i) =>
+						formatValue(i.ingredient)
+					);
+					const description = formatValue(recipes[i].description);
 					if (
-						recipes[i].name.toLowerCase().includes(filterType.element) ||
-						recipes[i].ingredients.some((i) =>
-							i.ingredient.toLowerCase().startsWith(filterType.element)
-						) ||
-						recipes[i].description.toLowerCase().includes(filterType.element)
+						name.includes(filterType.element) ||
+						description.includes(filterType.element)
 					) {
 						newRecipes.push(recipes[i]);
 					}
