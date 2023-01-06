@@ -1,7 +1,7 @@
 import { APPLIANCES, INGREDIENTS, REMOVE, USTENSILS } from "../../../@types/constants.js";
 import { fetchRecipes } from "../models/recipe.js";
 import { render } from "../views/recipe.js";
-import { setWidth } from "./setWidth.js";
+import { setWidthTag } from "./setWidth.js";
 
 /** @typedef {import('../../../@types/index.js').Recipe} Recipe*/
 /** @type {{text: string, type:string}[]} */
@@ -122,17 +122,6 @@ const createLi = (tagData, callback) => {
 		listOnclick(e, tagData, callback, text);
 	};
 	return $li;
-};
-
-/**
- * @description Set the width of the tag list
- */
-const setWidthTag = () => {
-	const $list = document.querySelector(".tag-wrapper.active ul");
-	const $span = document.querySelector(".tag-wrapper.active span");
-	if ($list) {
-		setWidth($list, $span);
-	}
 };
 
 /**

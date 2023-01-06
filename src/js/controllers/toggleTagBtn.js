@@ -1,5 +1,5 @@
 import { renderTagsData } from "./setTagData.js";
-import { setWidth } from "./setWidth.js";
+import { setWidthTag } from "./setWidth.js";
 
 /**
  * @description Create the three tags buttons (ingredients, appliance & ustensils) + their event listeners
@@ -59,7 +59,7 @@ export const handleTags = () => {
 				.split("")
 				.splice(0, content.length - 1)
 				.join("")}`;
-			setWidth($list, $span);
+			setWidthTag($list, $span);
 			$button.replaceWith($input);
 			$input.addEventListener("click", (e) => {
 				e.stopPropagation();
@@ -96,4 +96,5 @@ function listOnkeyup(e) {
 	};
 
 	renderTagsData({ tagFilter });
+	setWidthTag();
 }
