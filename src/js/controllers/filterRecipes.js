@@ -85,6 +85,7 @@ export async function filterRecipes(filterType) {
 					const description = formatValue(recipes[i].description);
 					if (
 						name.includes(filterType.element) ||
+						ingredients.some((i) => i.includes(filterType.element)) ||
 						description.includes(filterType.element)
 					) {
 						newRecipes.push(recipes[i]);
