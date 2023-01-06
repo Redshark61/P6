@@ -1,4 +1,5 @@
 import { ALL, APPLIANCES, INGREDIENTS, REMOVE, USTENSILS } from "../../../@types/constants.js";
+import { formatValue } from "../../utils/formatValue.js";
 import { fetchRecipes } from "../models/recipe.js";
 import { search } from "./search.js";
 /** @typedef {import('../../../@types/index.js').Recipe} Recipe*/
@@ -23,9 +24,9 @@ const filterCallbacks = {
 		return (
 			/** @param {Recipe} recipe*/
 			(recipe) =>
-				recipe.name.toLowerCase().includes(element) ||
-				recipe.ingredients.some((i) => i.ingredient.toLowerCase().startsWith(element)) ||
-				recipe.description.toLowerCase().includes(element)
+				formatValue(recipe.name).includes(element) ||
+				recipe.ingredients.some((i) => formatValue(i.ingredient).startsWith(element)) ||
+				formatValue(recipe.description).includes(element)
 		);
 	},
 };

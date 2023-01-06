@@ -1,17 +1,20 @@
 import { ALL } from "../../../@types/constants.js";
 import { render } from "../views/recipe.js";
-import { searchTag } from "./setTagData.js";
+import { renderTagsData, searchTag } from "./setTagData.js";
+import { formatValue } from "../../utils/formatValue.js";
 
 let previous = "";
 
-export const search = () => {
+export const search = async () => {
 	const $input = document.querySelector("#search>input");
 
-	render({ type: ALL, element: $input.value.toLowerCase() });
+	const recipes = render({ type: ALL, element: formatValue($input.value) });
 
-	$input.onkeyup = (e) => {
-		const value = e.target.value.trim();
-		if (!value.length) {
+	$input.onkeyup = async (e) => {
+		const value = formatValue(e.target.value);
+		if (!value.length || value.length < previous.length) {
+			// if we are deleting the search, we need to reset the recipes, and search using the tags.
+			// in searchTag(), this current function is called again
 			searchTag();
 		} else if (value.length < previous.length) {
 			searchTag();
