@@ -164,7 +164,6 @@ function listOnclick(e, tagData, callback, text) {
  * Is used to re-render all recipes based on the selected tags + the search bar
  */
 export function searchTag() {
-	console.log(tags);
 	const recipes = render({ type: REMOVE, element: tags });
 	renderTagsData({ recipes, callback: setWidthTag });
 }
