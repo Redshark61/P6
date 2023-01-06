@@ -1,7 +1,7 @@
 import { APPLIANCES, INGREDIENTS, REMOVE, USTENSILS } from "../../../@types/constants.js";
 import { fetchRecipes } from "../models/recipe.js";
 import { render } from "../views/recipe.js";
-import { setWidthTag } from "./setWidth.js";
+import { setWidthTag } from "../../utils/setWidth.js";
 
 /** @typedef {import('../../../@types/index.js').Recipe} Recipe*/
 /** @type {{text: string, type:string}[]} */

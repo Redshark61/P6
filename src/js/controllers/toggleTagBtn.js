@@ -1,5 +1,5 @@
 import { renderTagsData } from "./setTagData.js";
-import { setWidthTag } from "./setWidth.js";
+import { setWidthTag } from "../../utils/setWidth.js";
 
 /**
  * @description Create the three tags buttons (ingredients, appliance & ustensils) + their event listeners
